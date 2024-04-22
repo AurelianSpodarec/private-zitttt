@@ -26,7 +26,7 @@ export interface IProperty {
   updatedAt: string
   currencyId: string | null
   propertyStatusId: number
-  Currency: any
+  Currency: string
   PropertyStatus: IPropertyStatus
   PropertyType: IPropertyType
   Sector: ISector

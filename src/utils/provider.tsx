@@ -7,7 +7,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import { ThemeProvider } from '@/utils/theme-provider'
 
-function Provider ({ children, session }: { children: React.ReactNode, session?: any }) {
+function Provider ({ children, session }: { children: React.ReactNode, session?: unknown }) {
   const [client] = useState(new QueryClient())
 
   // if (process.env.NEXT_PUBLIC_VITE_ENVIRONMENT === undefined) {

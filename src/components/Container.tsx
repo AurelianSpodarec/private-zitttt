@@ -9,7 +9,7 @@ interface ContainerProps {
 }
 
 function Container ({ id, style, size, className, children }: ContainerProps) {
-  const options: any = {
+  const options: Record<string, string> = {
     fluid: 'max-w-none',
     sm: 'max-w-sm',
     base: 'max-w-base',

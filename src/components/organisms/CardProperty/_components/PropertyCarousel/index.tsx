@@ -9,7 +9,7 @@ import PropertyCarouselList from './_components/List'
 import PropertyCarouselControls from './_components/Controls'
 import PropertyCarouselPagination from './_components/Pagination'
 
-function CarouselProperty ({ images }: any) {
+function CarouselProperty ({ images }: { images: [string] }) {
   const [api, setApi] = React.useState<CarouselApi>()
   const [currentIndex, setCurrentIndex] = React.useState(0)
   const [count, setCount] = React.useState(0)

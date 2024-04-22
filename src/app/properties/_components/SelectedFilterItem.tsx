@@ -2,7 +2,7 @@ import { Badge } from '@/components/ui/badge'
 
 interface ISelectedFilterItem {
   name: string
-  onClick: any
+  onClick: () => void
 }
 
 function SelectedFilterItem ({ name, onClick }: ISelectedFilterItem) {

@@ -5,22 +5,22 @@ import { type ISkeleton } from './ISkeleton'
 interface ISkeletonDataText extends ISkeleton {
   children?: React.ReactNode
   text: string
-  element: string
+  element: keyof JSX.IntrinsicElements
   skeletonSize: string
-  isLoading: string | boolean | undefined
+  isLoading: boolean | undefined
 }
 
-function SkeletonDataText ({ element, className, text, variant = 'rectangular', skeletonSize, isLoading }: ISkeletonDataText) {
-  const Comp: any = element
+function SkeletonDataText ({ element, className, text, variant = 'rectangular', skeletonSize, isLoading = true }: ISkeletonDataText) {
+  const Comp = element
 
   return (
     <>
       {isLoading
         ? (
-        <Comp className={className}>{text}</Comp>
+          <Comp className={className}>{text}</Comp>
           )
         : (
-        <Skeleton variant={variant} className={skeletonSize} gutter="mb-0" />
+          <Skeleton variant={variant} className={skeletonSize} gutter="mb-0" />
           )}
     </>
   )

@@ -1,9 +1,7 @@
-'use client'
-
 import { getResponseContent, RequestError } from '../../requests'
 import config from './config_ziti'
 
-async function FetchZiti (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', data?: any) {
+async function FetchZiti (endpoint: string, method: 'GET' | 'POST' | 'PUT' | 'DELETE', data?: unknown) {
   const response = await fetch(`${config.API_URL}/${endpoint}`, {
     method,
     credentials: 'omit',

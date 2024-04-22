@@ -1,7 +1,7 @@
 export default class RequestError extends Error {
   public status
   public body
-  constructor (message: any, status: any, body: any) {
+  constructor (message: string, status: unknown, body: unknown) {
     super(message)
     this.status = status
     this.body = body

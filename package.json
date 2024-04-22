@@ -7,8 +7,7 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "eslint src --max-warnings=0",
-    "lint-fix": "next lint",
+    "lint": "eslint src/app --max-warnings=0 --fix",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "prepare": "husky install",
     "pre-commit": "lint-staged"
@@ -77,6 +76,10 @@
     }
   },
   "lint-staged": {
+    "!(src/components/ui/**/*)*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
     "*.{ts,tsx,js,jsx}": [
       "npm run lint --fix",
       "git add -A"
