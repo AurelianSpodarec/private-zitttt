@@ -1,3 +1,5 @@
+// src/services/apis/requests/blog.tsx
+
 // ============================================================
 // API Blog
 // ============================================================
@@ -5,18 +7,19 @@
 import { type IArticle, type IAuthor } from '@/interfaces/IBlog'
 import FetchZiti from '../fetch/FetchZiti'
 
-interface SchemaData {
-  SchemaData: {}
-}
-
 interface Res {
   NewsArticle?: IArticle
   SchemaData?: {}
+  OpenGraph?: {
+    OpenGraphData?: {}
+    OpenGraphTwitter?: {}
+  }
 }
 
 interface Res2 {
   NewsArticles?: IArticle[]
   SchemaData?: {}
+  OpenGraph?: {}
 }
 
 // Blog: Articles

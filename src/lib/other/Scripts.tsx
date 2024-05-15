@@ -1,5 +1,7 @@
 // src/components/Scripts.tsx
 
+'use client'
+
 import Script from 'next/script'
 
 const segmentScript = `
@@ -8,21 +10,44 @@ analytics.load("XjmCXlcNgbHfoQiorgvw78GBHZmcx8tT");
 analytics.page();
 }}();
 `
-const Scripts = (): JSX.Element | undefined => {
-  if (process.env.NODE_ENV !== 'production') {
-    return
-  }
 
-  return (
+const hotjarScript = `
+(function(h,o,t,j,a,r){
+  h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+  h._hjSettings={hjid:4982317,hjsv:6};
+  a=o.getElementsByTagName('head')[0];
+  r=o.createElement('script');r.async=1;
+  r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+  a.appendChild(r);
+})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+`
+
+const Scripts = (): JSX.Element | undefined => {
+  // Check if the code is running in the browser environment
+  if (typeof window !== 'undefined') {
+    // Check if hostname is exactly 'ziti.io'
+    if (window.location.hostname === 'ziti.io') {
+      return (
       <>
         <Script
           id="segment-script"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: segmentScript }}
         />
+        <Script
+          id="hotjar-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: hotjarScript }}
+        />
         {/* Add more scripts here as needed */}
       </>
-  )
+      )
+    } else {
+      console.log('Scripts initialization skipped outside of production deployment.')
+    }
+  }
+
+  // Return undefined if not in production mode or hostname is not 'ziti.io'
 }
 
 export default Scripts
