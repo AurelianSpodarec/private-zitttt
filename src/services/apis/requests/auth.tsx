@@ -23,7 +23,7 @@ import FetchZiti from '../fetch/FetchZiti'
 //   "emailVerified": false
 // }
 
-interface IAuthLoginByEmail {
+export interface IAuthLoginByEmail {
   identifier: string
   pwd: string
   rememberMe: boolean
@@ -33,12 +33,17 @@ interface IAuthRegisterByEmail {
   email: string
 }
 
+export async function authCheckEmail (data: string) {
+  console.log('wop', data)
+  return await FetchZiti('auth/email', 'POST', { email: data })
+}
+
 // Register
 // ===========================================
 
-export async function authRegisterByEmail (data: IAuthRegisterByEmail) {
-  return await FetchZiti('auth/email', 'POST', data)
-}
+// export async function authRegisterByEmail (data: IAuthRegisterByEmail) {
+//   return await FetchZiti('auth/email', 'POST', data)
+// }
 
 export function authRegisterByPhone () {
 
@@ -53,4 +58,12 @@ export async function authLoginByEmail (data: IAuthLoginByEmail) {
 
 export function authLoginByPhone () {
 
+}
+
+export async function getUserprofile () {
+  return await FetchZiti('users/profile', 'GET')
+}
+
+export async function refreshToken (refreshToken: string) {
+  return await FetchZiti('auth/refresh', 'GET', undefined, refreshToken)
 }

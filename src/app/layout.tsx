@@ -6,14 +6,14 @@ import MixpanelInitializer from '@/lib/other/MixpanelInitializer'
 import TrafficSourceTracker from '@/lib/other/TrafficSourceTracker'
 import Scripts from '@/lib/other/Scripts'
 
-import Provider from '@/context/provider'
-import { poppins, sourceSerif } from '@/utils/fonts'
+import ContextProvider from '@/context'
+import { poppins, sourceSerif } from '@/app/fonts'
 
 import './../styles/styles.scss'
 
 import Header from './_components/Header'
 
-const DynamicModalAuth = dynamic(async () => await import('@/components/organisms/Modal/ModalAuth'), { ssr: false })
+const DynamicModalAuth = dynamic(async () => await import('@/components/organisms/Modal/Auth'), { ssr: false })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ziti.io'),
@@ -36,11 +36,11 @@ export const metadata: Metadata = {
 
 function RootLayout ({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" >
+    <html lang="en" suppressHydrationWarning={true}>
       <MixpanelInitializer />
       <TrafficSourceTracker />
-      <body className={`${poppins.variable} ${sourceSerif.variable}`} >
-        <Provider>
+      <body className={`${poppins.variable} ${sourceSerif.variable}`} suppressHydrationWarning={true}>
+        <ContextProvider>
 
           <Header />
           <main>
@@ -48,7 +48,7 @@ function RootLayout ({ children }: Readonly<{ children: React.ReactNode }>) {
           </main>
 
           <DynamicModalAuth />
-        </Provider>
+        </ContextProvider>
       </body>
       <Scripts />
     </html>

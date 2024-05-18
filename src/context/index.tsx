@@ -5,15 +5,11 @@ import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-import ContextProviders from './contextProviders'
 import { ThemeProvider } from '@/context/theme-provider'
+import ModalProvider from './modal/modal-provider'
 
 function Provider ({ children, session }: { children: React.ReactNode, session?: unknown }) {
   const [client] = useState(new QueryClient())
-
-  // if (process.env.NEXT_PUBLIC_VITE_ENVIRONMENT === undefined) {
-  //   console.error("Enviroment file not defined or staging variable not defined (.env)")
-  // }
 
   return (
     <ThemeProvider
@@ -23,13 +19,10 @@ function Provider ({ children, session }: { children: React.ReactNode, session?:
       disableTransitionOnChange
     >
       <QueryClientProvider client={client}>
-        <ContextProviders>
-          <>
-            {children}
-            <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right" />
-            {/* <ModalAuth /> */}
-          </>
-        </ContextProviders>
+        <ModalProvider>
+          {children}
+        </ModalProvider>
+        <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right" />
       </QueryClientProvider>
     </ThemeProvider>
   )
