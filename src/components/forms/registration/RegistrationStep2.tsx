@@ -1,13 +1,13 @@
-import { ChangeEvent } from "react";
+import { type ChangeEvent } from 'react'
 
 interface RegistrationStep2Props {
-  formData: { email?: string; phoneNumber?: string };
-  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  formData: { email?: string, phoneNumber?: string }
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const RegistrationStep2: React.FC<RegistrationStep2Props> = ({
   formData,
-  handleInputChange,
+  handleInputChange
 }) => (
   <div>
     <label>
@@ -15,7 +15,7 @@ const RegistrationStep2: React.FC<RegistrationStep2Props> = ({
       <input
         type="email"
         name="email"
-        value={formData.email || ""}
+        value={formData.email || ''}
         onChange={handleInputChange}
         required
       />
@@ -25,12 +25,12 @@ const RegistrationStep2: React.FC<RegistrationStep2Props> = ({
       <input
         type="text"
         name="phoneNumber"
-        value={formData.phoneNumber || ""}
+        value={formData.phoneNumber || ''}
         onChange={handleInputChange}
         required
       />
     </label>
   </div>
-);
+)
 
-export default RegistrationStep2;
+export default RegistrationStep2

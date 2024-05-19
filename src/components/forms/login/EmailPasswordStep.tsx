@@ -1,13 +1,13 @@
-import { ChangeEvent } from "react";
+import { type ChangeEvent } from 'react'
 
 interface EmailPasswordStepProps {
-  formData: { email?: string; password?: string };
-  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  formData: { email?: string, password?: string }
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const EmailPasswordStep: React.FC<EmailPasswordStepProps> = ({
   formData,
-  handleInputChange,
+  handleInputChange
 }) => (
   <div>
     <label>
@@ -15,7 +15,7 @@ const EmailPasswordStep: React.FC<EmailPasswordStepProps> = ({
       <input
         type="email"
         name="email"
-        value={formData.email || ""}
+        value={formData.email || ''}
         onChange={handleInputChange}
         required
       />
@@ -25,12 +25,12 @@ const EmailPasswordStep: React.FC<EmailPasswordStepProps> = ({
       <input
         type="password"
         name="password"
-        value={formData.password || ""}
+        value={formData.password || ''}
         onChange={handleInputChange}
         required
       />
     </label>
   </div>
-);
+)
 
-export default EmailPasswordStep;
+export default EmailPasswordStep

@@ -5,12 +5,12 @@ const PhoneNumberStep = ({ formData, handleInputChange }) => (
       <input
         type="text"
         name="phoneNumber"
-        value={formData.phoneNumber || ""}
+        value={formData.phoneNumber || ''}
         onChange={handleInputChange}
         required
       />
     </label>
   </div>
-);
+)
 
-export default PhoneNumberStep;
+export default PhoneNumberStep

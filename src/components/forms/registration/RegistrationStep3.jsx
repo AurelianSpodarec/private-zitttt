@@ -1,13 +1,13 @@
-import { ChangeEvent } from "react";
+import { type ChangeEvent } from 'react'
 
 interface RegistrationStep3Props {
-  formData: { password?: string, confirmPassword?: string };
-  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  formData: { password?: string, confirmPassword?: string }
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const RegistrationStep3: React.FC<RegistrationStep3Props> = ({
   formData,
-  handleInputChange,
+  handleInputChange
 }) => (
   <div>
     <label>
@@ -15,7 +15,7 @@ const RegistrationStep3: React.FC<RegistrationStep3Props> = ({
       <input
         type="password"
         name="password"
-        value={formData.password || ""}
+        value={formData.password || ''}
         onChange={handleInputChange}
         required
       />
@@ -25,12 +25,12 @@ const RegistrationStep3: React.FC<RegistrationStep3Props> = ({
       <input
         type="password"
         name="confirmPassword"
-        value={formData.confirmPassword || ""}
+        value={formData.confirmPassword || ''}
         onChange={handleInputChange}
         required
       />
     </label>
   </div>
-);
+)
 
-export default RegistrationStep3;
+export default RegistrationStep3

@@ -1,13 +1,13 @@
-import { ChangeEvent } from "react";
+import { type ChangeEvent } from 'react'
 
 interface RegistrationStep1Props {
-  formData: { firstName?: string; lastName?: string };
-  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  formData: { firstName?: string, lastName?: string }
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const RegistrationStep1: React.FC<RegistrationStep1Props> = ({
   formData,
-  handleInputChange,
+  handleInputChange
 }) => (
   <div>
     <label>
@@ -15,7 +15,7 @@ const RegistrationStep1: React.FC<RegistrationStep1Props> = ({
       <input
         type="text"
         name="firstName"
-        value={formData.firstName || ""}
+        value={formData.firstName || ''}
         onChange={handleInputChange}
         required
       />
@@ -25,12 +25,12 @@ const RegistrationStep1: React.FC<RegistrationStep1Props> = ({
       <input
         type="text"
         name="lastName"
-        value={formData.lastName || ""}
+        value={formData.lastName || ''}
         onChange={handleInputChange}
         required
       />
     </label>
   </div>
-);
+)
 
-export default RegistrationStep1;
+export default RegistrationStep1
